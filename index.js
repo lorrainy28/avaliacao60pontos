@@ -43,7 +43,7 @@ app.post('/academia', (req, res) => {
     
     
     conexao.query(
-        'INSERT INTO sessoes (aluno, personal, tipo_treino,data,horario,observacoes) VALUES (?,?,?,?,?,?)',
+        'INSERT INTO planos (nome, atendimento, preco,quantidade) VALUES (?,?,?,?)',
         [
             nome,
             atendimento, 
@@ -59,7 +59,7 @@ app.post('/academia', (req, res) => {
 
 
 app.get('/academia', (req, res) => {
-    conexao.query('SELECT nome,atendimento,preco,quantidade FROM sessoes',(err, results) => {
+    conexao.query('SELECT nome,atendimento,preco,quantidade FROM planos',(err, results) => {
         if (err){
             return res.status(500).send('Erro ao buscar academia');
         }
